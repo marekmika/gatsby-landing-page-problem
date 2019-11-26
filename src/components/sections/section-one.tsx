@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { fontStyles } from '../../styles/variables';
 import SimpleRow from '../layout/simple-row';
 import styled from 'styled-components';
@@ -9,6 +9,8 @@ import { sizes } from '../../styles/sizes';
 import BackgroundImage from 'gatsby-background-image';
 import { backgroundImage } from '../images/background';
 import { injectIntl, IntlFormatters } from 'gatsby-plugin-intl';
+import Media from 'react-media';
+import React, { useState, useEffect } from 'react';
 
 const Row = styled(SimpleRow)`
   flex-direction: column;
@@ -51,27 +53,68 @@ const Row = styled(SimpleRow)`
 `;
 
 const SectionOne = ({ intl }: IntlFormatters) => {
-  const background = backgroundImage();
+  const [render, setRender] = useState(false);
+  useEffect(() => setRender(true), []);
+
+  const content = (
+    <Row>
+      <div className="text-wrapper">
+        <Container
+          heading={intl.formatMessage({ id: 'indexPage.sectionOne.heading' })}
+          text={
+            <Text>
+              {intl.formatMessage({ id: 'indexPage.sectionOne.text1' })}
+              <TextBold>
+                {' '}
+                {intl.formatMessage({ id: 'indexPage.sectionOne.text2' })}
+              </TextBold>
+            </Text>
+          }
+          marginTop={'0px'}
+        />
+      </div>
+    </Row>
+  );
+
+  const query = backgroundImage();
+
   return (
-    <BackgroundImage Tag="section" fluid={background}>
-      <Row>
-        <div className="text-wrapper">
-          <Container
-            heading={intl.formatMessage({ id: 'indexPage.sectionOne.heading' })}
-            text={
-              <Text>
-                {intl.formatMessage({ id: 'indexPage.sectionOne.text1' })}
-                <TextBold>
-                  {' '}
-                  {intl.formatMessage({ id: 'indexPage.sectionOne.text2' })}
-                </TextBold>
-              </Text>
-            }
-            marginTop={'0px'}
-          />
-        </div>
-      </Row>
-    </BackgroundImage>
+    <Media
+      queries={{
+        small: '(max-width: 599px)',
+        medium: '(min-width: 600px) and (max-width: 1199px)',
+        large: '(min-width: 1200px)'
+      }}
+    >
+      {(matches: any) => (
+        <>
+          {matches.small && render && (
+            <BackgroundImage
+              Tag="section"
+              fluid={query.mobile.childImageSharp.fixed}
+            >
+              {content}
+            </BackgroundImage>
+          )}
+          {matches.medium && render && (
+            <BackgroundImage
+              Tag="section"
+              fluid={query.tablet.childImageSharp.fixed}
+            >
+              {content}
+            </BackgroundImage>
+          )}
+          {matches.large && render && (
+            <BackgroundImage
+              Tag="section"
+              fluid={query.smalldesktop.childImageSharp.fixed}
+            >
+              {content}
+            </BackgroundImage>
+          )}
+        </>
+      )}
+    </Media>
   );
 };
 

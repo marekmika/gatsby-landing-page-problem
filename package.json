@@ -9,6 +9,7 @@
     ]
   },
   "dependencies": {
+    "@artsy/fresnel": "^1.0.7",
     "babel-plugin-styled-components": "^1.10.6",
     "gatsby": "2.16.3",
     "gatsby-background-image": "^0.8.15",
@@ -26,6 +27,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
+    "react-media": "^1.10.0",
     "styled-components": "^4.4.1",
     "typescript": "^3.5.2"
   },
