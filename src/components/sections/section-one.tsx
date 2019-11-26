@@ -53,8 +53,8 @@ const Row = styled(SimpleRow)`
 `;
 
 const SectionOne = ({ intl }: IntlFormatters) => {
-  const [render, setRender] = useState(false);
-  useEffect(() => setRender(true), []);
+  // const [render, setRender] = useState(false);
+  // useEffect(() => setRender(true), []);
 
   const content = (
     <Row>
@@ -88,7 +88,7 @@ const SectionOne = ({ intl }: IntlFormatters) => {
     >
       {(matches: any) => (
         <>
-          {matches.small && render && (
+          {matches.small && (
             <BackgroundImage
               Tag="section"
               fluid={query.mobile.childImageSharp.fixed}
@@ -96,7 +96,7 @@ const SectionOne = ({ intl }: IntlFormatters) => {
               {content}
             </BackgroundImage>
           )}
-          {matches.medium && render && (
+          {matches.medium && (
             <BackgroundImage
               Tag="section"
               fluid={query.tablet.childImageSharp.fixed}
@@ -104,7 +104,7 @@ const SectionOne = ({ intl }: IntlFormatters) => {
               {content}
             </BackgroundImage>
           )}
-          {matches.large && render && (
+          {matches.large && (
             <BackgroundImage
               Tag="section"
               fluid={query.smalldesktop.childImageSharp.fixed}
