@@ -152,7 +152,7 @@ const Wrapper = styled.header<{ isOpen: boolean }>`
     transition: color 0.3s ease-out;
   }
   & .item.active {
-    ${fontStyles.footerHeading},
+    ${fontStyles.footerHeading};
     position: relative;
     font-weight: bold;
     color: white;
