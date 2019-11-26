@@ -107,7 +107,7 @@ const SectionOne = ({ intl }: IntlFormatters) => {
           {matches.large && render && (
             <BackgroundImage
               Tag="section"
-              fluid={query.smallDekstop.childImageSharp.fixed}
+              fluid={query.smalldesktop.childImageSharp.fixed}
             >
               {content}
             </BackgroundImage>
