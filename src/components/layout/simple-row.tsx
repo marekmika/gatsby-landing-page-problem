@@ -1,4 +1,4 @@
-import React, { ReactNode, CSSProperties } from 'react'
+import React, { ReactNode, CSSProperties, useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 interface IProps {
@@ -15,7 +15,11 @@ const Row = styled.div`
 
 const SimpleRow = (props: IProps) => {
   const { children, ...rest } = props
-  return <Row {...rest}>{children}</Row>
+
+  const [render, setRender] = useState(false);
+  useEffect(() => setRender(true), []);
+
+  return render && <Row {...rest}>{children}</Row>
 }
 
 export default SimpleRow

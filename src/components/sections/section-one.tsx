@@ -53,8 +53,6 @@ const Row = styled(SimpleRow)`
 `;
 
 const SectionOne = ({ intl }: IntlFormatters) => {
-  // const [render, setRender] = useState(false);
-  // useEffect(() => setRender(true), []);
 
   const content = (
     <Row>
